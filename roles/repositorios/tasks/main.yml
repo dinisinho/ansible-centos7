@@ -1,0 +1,8 @@
+- name: 'Engadir repositorios'
+  yum_repository:
+    name: '{{ item.key }}'
+    description: '{{ item.value.description }}'
+    baseurl: '{{ item.value.url }}'
+    gpgcheck: False
+    timeout: 100
+  with_dict: '{{ repositorios }}'

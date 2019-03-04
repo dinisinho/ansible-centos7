@@ -1,0 +1,6 @@
+---
+- name: 'Instala paquetes'
+  yum:
+    name:
+      "{{ paquetes_base }}"
+    state: present

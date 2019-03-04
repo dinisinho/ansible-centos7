@@ -1,0 +1,12 @@
+---
+- hosts: centos7
+  gather_facts: true
+
+  tasks:
+
+
+  roles:
+    - repositorios
+    - actualiza
+    - base
+    - nscp
