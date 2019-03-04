@@ -1,1 +1,1 @@
-# Configuración Inicial de Máquinas Centos 7 con nsclient
+# Configuración Inicial de Máquinas Centos 7 con ansible
