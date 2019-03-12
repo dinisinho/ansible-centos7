@@ -1,5 +1,5 @@
 [centos7]
-192.168.0.22
+localhost
 
 [centos7:vars]
 ansible_user=root

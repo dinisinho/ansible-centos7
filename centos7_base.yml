@@ -1,5 +1,6 @@
 ---
-- hosts: centos7
+- hosts: 127.0.0.1
+  connection: local
   gather_facts: true
 
   tasks:
@@ -10,3 +11,4 @@
     - actualiza
     - base
     - nscp
+    - openvpn

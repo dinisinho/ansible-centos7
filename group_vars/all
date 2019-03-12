@@ -4,16 +4,18 @@ repositorios:
     url: 'https://download.fedoraproject.org/pub/epel/$releasever/$basearch/'
     description: 'Repositorio de epel'
   dinisinho:
-    url: 'http://repositorio.dinisinho.local/centos/7/'
+    url: 'http://repositorio.dinisinho.eu/centos/7/'
     description: 'Repositorio dinisinho'
 
 paquetes_base:
   - bash-completion
   - vim
-  - openvpn
   - rsync
   - git
   - bind-utils
+  - unzip
+  - wget
+  - telnet
 
 paquetes_nscp:
   - nscp-server
@@ -22,4 +24,7 @@ paquetes_nscp:
   - nscp-nsca
   - python2-psutil
 
+paquetes_ovpn:
+  - openvpn
+  
 git_nscp: 'https://github.com/dinisinho/nscp'

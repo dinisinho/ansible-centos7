@@ -1,0 +1,24 @@
+---
+- name: 'Instala paquetes OpenVPN'
+  yum:
+    name:
+      "{{ paquetes_ovpn }}"
+    state: present
+
+- name: 'Copia ficheiros de configuración'
+  unarchive:
+    src: 'files/{{ OVPN_HOSTNAME }}.tar.gz'
+    dest: '/etc/openvpn/client/'
+
+- name: 'Crea enlace simbólico'
+  file:
+    src: '/etc/openvpn/client/{{ OVPN_HOSTNAME }}/{{ OVPN_HOSTNAME }}.conf'
+    dest: '/etc/openvpn/client/{{ OVPN_HOSTNAME }}.conf'
+    state: link
+
+- name: 'Reinicia e habilita o servizo OpenVPN'
+  systemd:
+    state: restarted
+    enabled: yes
+    name: openvpn-client@{{ OVPN_HOSTNAME }}
+

@@ -1,20 +1,37 @@
 ---
-- name: 'Instala paquetes para OpenVPN'
+- name: 'Instala paquetes para NSCP'
   yum:
     name:
       "{{ paquetes_nscp }}"
     state: present
 
+- name: 'Comprobamos se existe o ficheiro'
+  stat:
+    path: /tmp/nscp.txt
+  register: result
+
 - name: 'Elimina configuración por defecto'
   file:
     state: absent
     path: '/etc/nsclient/'
+  when: result.stat.exists == false
 
 - name: 'Configuracion'
   git:
     repo: '{{ git_nscp }}'
     dest: '/etc/nsclient'
     clone: yes
+  when: result.stat.exists == false
+
+- name: 'Crea ficheiro de control'
+  file:
+    state: touch
+    path: '/tmp/nscp.txt'
+
+- name: 'Xera nsclient.ini'
+  template:
+    src: 'templates/nsclient.ini'
+    dest: '/etc/nsclient'
 
 - name: 'Servizo'
   systemd:
